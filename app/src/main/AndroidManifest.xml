@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GithubRepositoryProject"
         tools:targetApi="31">
         <activity
+            android:name=".RepositoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="true"
             android:launchMode="singleTask">
@@ -39,7 +42,7 @@
             android:exported="false"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.GithubRepositoryProject" />
-        <activity android:name=".SearchActivity"/>
+        <activity android:name=".SearchActivity" />
     </application>
 
 </manifest>

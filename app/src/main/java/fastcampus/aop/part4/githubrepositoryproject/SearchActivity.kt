@@ -1,5 +1,6 @@
 package fastcampus.aop.part4.githubrepositoryproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -8,7 +9,6 @@ import androidx.core.view.isGone
 import fastcampus.aop.part4.githubrepositoryproject.data.entity.GithubRepoEntity
 import fastcampus.aop.part4.githubrepositoryproject.databinding.ActivitySearchBinding
 import fastcampus.aop.part4.githubrepositoryproject.utility.RetrofitUtil
-import fastcampus.aop.part4.githubrepositoryproject.utility.RetrofitUtil.githubApiService
 import fastcampus.aop.part4.githubrepositoryproject.view.RepositoryRecyclerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,7 +74,12 @@ class SearchActivity : AppCompatActivity(), CoroutineScope {
     private fun setData(items: List<GithubRepoEntity>) {
         adapter.setSearchResultList(items) {
             Toast.makeText(this, "이름 : ${it.fullName}", Toast.LENGTH_SHORT).show()
-
+            startActivity(
+                Intent(this@SearchActivity, RepositoryActivity::class.java).apply {
+                    putExtra(RepositoryActivity.REPOSITORY_OWNER_KEY, it.owner.login)
+                    putExtra(RepositoryActivity.REPOSITORY_NAME_KEY, it.name)
+                }
+            )
         }
     }
 }
