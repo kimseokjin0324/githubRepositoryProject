@@ -1,5 +1,6 @@
 package fastcampus.aop.part4.githubrepositoryproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initViews()
+
         launch {
             //mocking 데이터 받아올 job
             addMockData()
@@ -40,6 +43,14 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
         }
 
+    }
+
+    private fun initViews() = with(binding) {
+        searchButton.setOnClickListener {
+            startActivity(
+                Intent(this@MainActivity, SearchActivity::class.java)
+            )
+        }
     }
 
     private suspend fun addMockData() = withContext(Dispatchers.IO) {
