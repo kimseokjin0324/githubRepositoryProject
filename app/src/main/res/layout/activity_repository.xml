@@ -41,7 +41,7 @@
         tools:text="soda1127/blahblah"
         app:layout_constraintVertical_chainStyle="packed"/>
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/likeButton"
         android:layout_width="42dp"
         android:layout_height="42dp"
@@ -51,7 +51,7 @@
         android:layout_marginEnd="8dp"
         tools:src="@drawable/ic_dislike"
         android:scaleType="center"
-        app:tint="@color/red" />-->
+        app:tint="@color/red" />
 
     <TextView
         android:id="@+id/stargazersCountText"
